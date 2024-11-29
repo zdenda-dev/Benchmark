@@ -2,7 +2,6 @@ import math
 import time
 import multiprocessing
 
-# Funkce pro výpočet Fibonacciho čísla (intenzivní výpočet)
 def compute_fibonacci(n):
     if n <= 1:
         return n
@@ -13,13 +12,11 @@ def cpu_intensive_task():
     processes = []
     num_processes = multiprocessing.cpu_count()
 
-    # Vytvoříme tolik procesů, kolik máme CPU jader
     for _ in range(num_processes):
         p = multiprocessing.Process(target=compute_fibonacci, args=(30,))
         processes.append(p)
         p.start()
 
-    # Počkáme, až všechny procesy dokončí výpočet
     for p in processes:
         p.join()
 
